@@ -1,10 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Make people happier!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/jquery-jvectormap-2.0.3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="app.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato|Permanent+Marker" rel="stylesheet">
 </head>
-<body>
-    hai
+<body ng-controller="MainCtrl">
+    <div class="menu font-common">
+        <div class="limiter">
+            <div class="menu-entry" ng-class="menuClass('/map')">
+                <a href="#!/map">Happiness map</a>
+            </div>
+            <div class="menu-entry" ng-class="menuClass('/how-it-was-calculated')">
+                <a href="#!/how-it-was-calculated">How we calculated that?</a>
+            </div>
+            <div class="menu-entry" ng-class="menuClass('/authors')">
+                <a href="#!/authors">Authors pleiad</a>
+            </div>
+            <div class="menu-entry" ng-class="menuClass('/our-goals')">
+                <a href="#!/our-goals">Our goals</a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-view></div>
+
+    <div class="intro-overlay"
+        ng-class="{'overlay-hidden': !isOverlayShown}"
+        ng-click="hideOverlay()">
+        <div class="title font-title">
+            Make people happier!
+        </div>
+        <div class="sub-title">
+            Click on countries to discover how happy its inhabitants are and what can you do to make them feel better!
+        </div>
+        <div class="continue">
+            [click anywhere to continue]
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="services/countries.js"></script>
+    <script src="map/map.js"></script>
+    <script src="how-calculated/how-calculated.js"></script>
+    <script src="country-info/country-info.js"></script>
+    <script src="authors/authors.js"></script>
+    <script src="goals/goals.js"></script>
+
+    <script src="lib/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="lib/world-map.js"></script>
 </body>
 </html>

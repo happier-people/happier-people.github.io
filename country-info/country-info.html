@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Country info</h3>
+</div>
+<div class="modal-body" id="modal-body" style="height: 300px; overflow-y: auto;">
+    <div>
+        Happiness index: {{countryInfo['HappyIndex']}}
+    </div>
+    <div ng-repeat="infoBlock in countryInfo['Infos']">
+        {{infoBlock}}
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    overflow-y: scroll;
+    background-color: #edeef0;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.limiter {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.menu {
+    list-style: none;
+    height: 50px;
+    background-color: #151c46;
+    margin: 0;
+}
+.menu .limiter {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu .menu-entry {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.menu a:hover,
+.menu .active a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    padding-bottom: 3px;
+}
+
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(255,255,255,0.8);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    cursor: pointer;
+}
+.intro-overlay.overlay-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.intro-overlay .title {
+    color: #151c46;
+    font-size: 70px;
+}
+.intro-overlay .sub-title {
+    color: #151c46;
+    font-size: 18px;
+    max-width: 500px;
+    text-align: center;
+}
+.intro-overlay .continue {
+    margin-top: 50px;
+    opacity: 0.7;
+}
+
+.font-title {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.map-container {
+    width: 100%;
+    height: calc(100vh - 50px);
+}
+.jvectormap-region {
+    stroke: #151c46;
+    stroke-width: 0.5;
+}
+
+.authors .author-block {
+    display: flex;
+    margin: 15px 0;
+    background-color: #fff;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    padding: 15px;
+    justify-content: space-between;
+}
+.author-block .photo-holder {
+    width: 220px;
+}
+.author-block .text-holder {
+    width: calc(100% - 235px);
+}
+.author-block .text-holder .name {
+    font-size: 22px;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+.author-block .text-holder .description {
+    line-height: 1.5;
+}
