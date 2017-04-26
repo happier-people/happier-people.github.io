@@ -13,10 +13,10 @@ angular.module('myApp.map', ['ngRoute'])
     '$scope', '$uibModal', 'countriesService',
     function ($scope, $uibModal, countriesService) {
 
-        var palette = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854'];
+        let palette = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854'];
 
         function generateColors (){
-            var colors = {},
+            let colors = {},
                 key;
 
             for (key in map.regions) {
@@ -27,44 +27,54 @@ angular.module('myApp.map', ['ngRoute'])
         }
 
         function onRegionClick (event, code) {
-            var requestedCountry = $scope.countries
-                .filter(function (country) {
-                    return country['Code'] === code;
-                })[0];
+            let modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'country-info/country-info.html',
+                controller: 'CountryInfoCtrl',
+                resolve: {
+                    countryInfo: function () {
+                        return {};
+                    }
+                }
+            });
 
-            if (!requestedCountry) {
-                return console.log('country not found');
-            }
+            modalInstance.result.then(function () {
+                console.log('resolved');
+            }, function () {
+                console.log('rejected');
+            });
 
-            countriesService.getCountryInfo(requestedCountry['Id'])
-                .then(function (res) {
-                    var countryInfo = res.data;
-                    console.log(requestedCountry['Code']);
-
-                    var modalInstance = $uibModal.open({
-                        animation: true,
-                        templateUrl: 'country-info/country-info.html',
-                        controller: 'CountryInfoCtrl',
-                        resolve: {
-                            countryInfo: function () {
-                                return countryInfo;
-                            }
-                        }
-                    });
-
-                    modalInstance.result.then(function () {
-                        console.log('resolved');
-                    }, function () {
-                        console.log('rejected');
-                    });
-                });
+            // countriesService.getCountryInfo(code)
+            //     .then(function (res) {
+            //         let countryInfo = res.data;
+            //
+            //         let modalInstance = $uibModal.open({
+            //             animation: true,
+            //             templateUrl: 'country-info/country-info.html',
+            //             controller: 'CountryInfoCtrl',
+            //             resolve: {
+            //                 countryInfo: function () {
+            //                     return countryInfo;
+            //                 }
+            //             }
+            //         });
+            //
+            //         modalInstance.result.then(function () {
+            //             console.log('resolved');
+            //         }, function () {
+            //             console.log('rejected');
+            //         });
+            //     })
+            //     .catch(function (err) {
+            //         console.log(err);
+            //     });
         }
 
         function onRegionTipShow (e, el, code) {
             el.html(el.html() + ' (code: ' + code + ')');
         }
 
-        var map = new jvm.Map({
+        let map = new jvm.Map({
             map: 'world_mill',
             container: $('#map-container'),
             backgroundColor: '#77c9d4',
@@ -78,15 +88,11 @@ angular.module('myApp.map', ['ngRoute'])
         });
         map.series.regions[0].setValues(generateColors());
 
-    // $('#map-container').vectorMap({
-    //     map: 'world_mill',
-    //     backgroundColor: '#77c9d4',
-    //     onRegionClick: onRegionClick,
-    //     onRegionTipShow: onRegionTipShow
-    // });
-
     countriesService.getAllCountries()
         .then(function (res) {
             $scope.countries = res.data;
+        })
+        .catch(function (err) {
+            console.log(err);
         });
 }]);

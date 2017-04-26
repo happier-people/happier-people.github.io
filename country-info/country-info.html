@@ -1,15 +1,27 @@
-<div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Country info</h3>
-</div>
-<div class="modal-body" id="modal-body" style="height: 300px; overflow-y: auto;">
-    <div>
-        Happiness index: {{countryInfo['HappyIndex']}}
+<div class="country-info">
+    <div class="step step-1">
+        <div class="dude">
+            <img src="assets/ukraine-smile.svg" />
+        </div>
+        <div class="description">
+            <div class="people-are">
+                People in Ukraine are
+            </div>
+            <div class="status">
+                HAPPY
+            </div>
+            <div class="rating">
+                (total happiness rating is 0.95)
+            </div>
+            <button ng-click="goToSlide(2)" class="why">Why?</button>
+        </div>
     </div>
-    <div ng-repeat="infoBlock in countryInfo['Infos']">
-        {{infoBlock}}
+    <div class="step step-2 step-invisible">
+        step 2
+        <button ng-click="goToSlide(3)">go to step 3</button>
     </div>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <div class="step step-3 step-invisible">
+        step 3
+        <button>close</button>
+    </div>
 </div>
