@@ -294,7 +294,7 @@ a {
 .country-info .step-2 .title {
     position: absolute;
     height: 26px;
-    top: -12px;
+    top: -18px;
     right: 10px;
     padding: 0 13px;
     box-shadow: 0 0 1px 1px #afafaf;
@@ -325,4 +325,38 @@ a {
     color: #fff;
     outline: none;
     font-size: 24px;
+}
+.country-info .step-2 .gauge {
+    height: 5px;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 5px 0 10px;
+}
+.country-info .step-2 .gauge-inner {
+    height: 100%;
+}
+.country-info.happy .step-2 .gauge {
+    background-color: #dcffdc;
+}
+.country-info.happy .step-2 .gauge-inner {
+    background-color: #1ab394;
+}
+.country-info.alright .step-2 .gauge {
+    background-color: #dcdcff
+}
+.country-info.alright .step-2 .gauge-inner {
+    background-color: #1c84c6;
+}
+.country-info.sad .step-2 .gauge {
+    background-color: #ffffdc;
+}
+.country-info.sad .step-2 .gauge-inner {
+    background-color: #f0ad4e;
+}
+.country-info.crying .step-2 .gauge {
+    background-color: #ffdcdc;
+}
+.country-info.crying .step-2 .gauge-inner {
+    background-color: #ed5565;
 }
