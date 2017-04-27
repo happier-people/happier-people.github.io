@@ -1,17 +1,19 @@
-<div class="country-info">
+<div class="country-info" ng-class="countryMood">
     <div class="step step-1">
         <div class="dude">
-            <img src="assets/ukraine-smile.svg" />
+            <img class="flag-bg"
+                 ng-src="https://peoplehappy.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">
+            <img class="dude-stencil" ng-src="assets/dude-{{countryMood}}.png" />
         </div>
         <div class="description">
             <div class="people-are">
-                People in Ukraine are
+                People in {{countryInfo['Name']}} are
             </div>
             <div class="status">
-                HAPPY
+                {{countryMood}}
             </div>
             <div class="rating">
-                (total happiness rating is 0.95)
+                (total happiness rating is {{countryInfo['HappyIndex'].toFixed(2)}})
             </div>
             <button ng-click="goToSlide(2)" class="why">Why?</button>
         </div>

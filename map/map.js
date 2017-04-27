@@ -27,22 +27,28 @@ angular.module('myApp.map', ['ngRoute'])
         }
 
         function onRegionClick (event, code) {
-            let modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'country-info/country-info.html',
-                controller: 'CountryInfoCtrl',
-                resolve: {
-                    countryInfo: function () {
-                        return {};
-                    }
-                }
-            });
+            countriesService
+                .getCountryInfo(code)
+                .then(function (res) {
+                    // todo: handle errors
+                    let modalInstance = $uibModal.open({
+                        animation: true,
+                        templateUrl: 'country-info/country-info.html',
+                        controller: 'CountryInfoCtrl',
+                        resolve: {
+                            countryInfo: function () {
+                                return res.data;
+                            }
+                        }
+                    });
 
-            modalInstance.result.then(function () {
-                console.log('resolved');
-            }, function () {
-                console.log('rejected');
-            });
+                    // modalInstance.result.then(function () {
+                    //     console.log('resolved');
+                    // }, function () {
+                    //     console.log('rejected');
+                    // });
+                });
+
 
             // countriesService.getCountryInfo(code)
             //     .then(function (res) {
