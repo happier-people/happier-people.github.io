@@ -6,8 +6,7 @@ angular.module('myApp').controller('CountryInfoCtrl', [
         countryInfo
     ) {
         $scope.countryInfo = countryInfo;
-        // $scope.countryMood = hiService.getMood(countryInfo['HappyIndex']);
-        $scope.countryMood = 'crying';
+        $scope.countryMood = hiService.getMood(countryInfo['HappyIndex']);
 
         // $scope.ok = function () {
         //     $uibModalInstance.close();

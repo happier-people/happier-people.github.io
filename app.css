@@ -171,12 +171,12 @@ a {
     opacity: 0;
     pointer-events: none;
 }
-.country-info .step-1 {
+.country-info .step {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.country-info .step-1 .dude {
+.country-info .step .dude {
     width: 350px;
     height: 350px;
     position: relative;
@@ -193,6 +193,7 @@ a {
 }
 .country-info .step-1 .description {
     text-align: center;
+    width: 350px;
 }
 .country-info .step-1 .status {
     font-size: 100px;
@@ -204,15 +205,19 @@ a {
     letter-spacing: 1px;
 }
 .country-info .step-1 .why {
-    width: 150px;
-    height: 45px;
+    width: 200px;
+    height: 75px;
     margin-top: 50px;
     border-radius: 5px;
     color: #fff;
     outline: none;
+    font-size: 24px;
 }
 .country-info .step-1 .people-are {
-    font-size: 20px;
+    font-size: 30px;
+}
+.country-info .step-1 .rating {
+    font-size: 22px;
 }
 .country-info.happy .status {
     color: #1ab394;

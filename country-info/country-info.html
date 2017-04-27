@@ -19,8 +19,21 @@
         </div>
     </div>
     <div class="step step-2 step-invisible">
-        step 2
-        <button ng-click="goToSlide(3)">go to step 3</button>
+        <div class="left-column">
+            <div class="dude">
+                <img class="flag-bg"
+                     ng-src="https://peoplehappy.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">
+                <img class="dude-stencil" ng-src="assets/dude-{{countryMood}}.png" />
+            </div>
+            <button ng-click="goToSlide(3)">go to step 3</button>
+        </div>
+        <div class="info">
+            <div class="info-block" ng-repeat="info in countryInfo['Infos']">
+                <div class="title">{{info['Name']}}</div>
+                <div class="gauge">{{info['Index']}}</div>
+                <div class="text">{{info['Text']}}</div>
+            </div>
+        </div>
     </div>
     <div class="step step-3 step-invisible">
         step 3
