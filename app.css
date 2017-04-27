@@ -223,11 +223,13 @@ a {
     color: #1ab394;
     -webkit-text-stroke: 3px #16987e;
 }
-.country-info.happy .why {
+.country-info.happy .why,
+.country-info.happy .step-2 .how-to-change {
     background-color: #1ab394;
     border: 2px solid #16987e;
 }
-.country-info.happy .why:hover {
+.country-info.happy .why:hover,
+.country-info.happy .step-2 .how-to-change:hover {
     background-color: #18a689;
 }
 
@@ -236,11 +238,13 @@ a {
     -webkit-text-stroke: 3px #1872ab;
     font-size: 80px;
 }
-.country-info.alright .why {
+.country-info.alright .why,
+.country-info.alright .step-2 .how-to-change {
     background-color: #1c84c6;
     border: 2px solid #1872ab;
 }
-.country-info.alright .why:hover {
+.country-info.alright .why:hover,
+.country-info.alright .step-2 .how-to-change:hover {
     background-color: #1a7bb9;
 }
 
@@ -248,11 +252,13 @@ a {
     color: #f0ad4e;
     -webkit-text-stroke: 3px #f79d3c;
 }
-.country-info.sad .why {
+.country-info.sad .why,
+.country-info.sad .step-2 .how-to-change{
     background-color: #f0ad4e;
     border: 2px solid #f79d3c;
 }
-.country-info.sad .why:hover {
+.country-info.sad .why:hover,
+.country-info.sad .step-2 .how-to-change:hover {
     background-color: #f7a54a;
 }
 
@@ -261,10 +267,62 @@ a {
     color: #ed5565;
     -webkit-text-stroke: 3px #ea394c;
 }
-.country-info.crying .why {
+.country-info.crying .why,
+.country-info.crying .step-2 .how-to-change {
     background-color: #ed5565;
     border: 2px solid #ea394c;
 }
-.country-info.crying .why:hover {
+.country-info.crying .why:hover,
+.country-info.crying .step-2 .how-to-change:hover {
     background-color: #ec4758;
+}
+
+.country-info .step-2 .dude {
+    width: 250px;
+    height: 250px;
+}
+.country-info .step-2 .info {
+    width: 450px;
+}
+.country-info .step-2 .info-block {
+    padding: 10px;
+    margin: 25px 0;
+    box-shadow: 0 0 1px 1px #afafaf;
+    position: relative;
+    border-radius: 10px 0;
+}
+.country-info .step-2 .title {
+    position: absolute;
+    height: 26px;
+    top: -12px;
+    right: 10px;
+    padding: 0 13px;
+    box-shadow: 0 0 1px 1px #afafaf;
+    font-size: 18px;
+    line-height: 26px;
+}
+.country-info.happy .step-2 .info-block,
+.country-info.happy .step-2 .title {
+    background-color: #f0fff0;
+}
+.country-info.alright .step-2 .info-block,
+.country-info.alright .step-2 .title {
+    background-color: #f0f0ff;
+}
+.country-info.sad .step-2 .info-block,
+.country-info.sad .step-2 .title {
+    background-color: #f0ffff;
+}
+.country-info.crying .step-2 .info-block,
+.country-info.crying .step-2 .title {
+    background-color: #fff0f0;
+}
+.country-info .step-2 .how-to-change {
+    width: 230px;
+    height: 75px;
+    margin-top: 50px;
+    border-radius: 5px;
+    color: #fff;
+    outline: none;
+    font-size: 24px;
 }
