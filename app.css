@@ -39,6 +39,7 @@ img {
 a {
     color: inherit;
     text-decoration: none;
+    outline: none;
 }
 
 .limiter {
@@ -223,13 +224,11 @@ a {
     color: #1ab394;
     -webkit-text-stroke: 3px #16987e;
 }
-.country-info.happy .why,
-.country-info.happy .step-2 .how-to-change {
+.country-info.happy .colored-button {
     background-color: #1ab394;
     border: 2px solid #16987e;
 }
-.country-info.happy .why:hover,
-.country-info.happy .step-2 .how-to-change:hover {
+.country-info.happy .colored-button:hover {
     background-color: #18a689;
 }
 
@@ -238,13 +237,11 @@ a {
     -webkit-text-stroke: 3px #1872ab;
     font-size: 80px;
 }
-.country-info.alright .why,
-.country-info.alright .step-2 .how-to-change {
+.country-info.alright .colored-button {
     background-color: #1c84c6;
     border: 2px solid #1872ab;
 }
-.country-info.alright .why:hover,
-.country-info.alright .step-2 .how-to-change:hover {
+.country-info.alright .colored-button:hover {
     background-color: #1a7bb9;
 }
 
@@ -252,13 +249,11 @@ a {
     color: #f0ad4e;
     -webkit-text-stroke: 3px #f79d3c;
 }
-.country-info.sad .why,
-.country-info.sad .step-2 .how-to-change{
+.country-info.sad .colored-button {
     background-color: #f0ad4e;
     border: 2px solid #f79d3c;
 }
-.country-info.sad .why:hover,
-.country-info.sad .step-2 .how-to-change:hover {
+.country-info.sad .colored-button:hover {
     background-color: #f7a54a;
 }
 
@@ -267,13 +262,11 @@ a {
     color: #ed5565;
     -webkit-text-stroke: 3px #ea394c;
 }
-.country-info.crying .why,
-.country-info.crying .step-2 .how-to-change {
+.country-info.crying .colored-button {
     background-color: #ed5565;
     border: 2px solid #ea394c;
 }
-.country-info.crying .why:hover,
-.country-info.crying .step-2 .how-to-change:hover {
+.country-info.crying .colored-button:hover {
     background-color: #ec4758;
 }
 
@@ -301,19 +294,23 @@ a {
     line-height: 26px;
 }
 .country-info.happy .step-2 .info-block,
-.country-info.happy .step-2 .title {
+.country-info.happy .step-2 .title,
+.country-info.happy .step-3 .ways-block {
     background-color: #f0fff0;
 }
 .country-info.alright .step-2 .info-block,
-.country-info.alright .step-2 .title {
+.country-info.alright .step-2 .title,
+.country-info.alright .step-3 .ways-block {
     background-color: #f0f0ff;
 }
 .country-info.sad .step-2 .info-block,
-.country-info.sad .step-2 .title {
+.country-info.sad .step-2 .title,
+.country-info.sad .step-3 .ways-block {
     background-color: #f0ffff;
 }
 .country-info.crying .step-2 .info-block,
-.country-info.crying .step-2 .title {
+.country-info.crying .step-2 .title,
+.country-info.crying .step-3 .ways-block {
     background-color: #fff0f0;
 }
 .country-info .step-2 .how-to-change {
@@ -344,25 +341,29 @@ a {
 .country-info.happy .step-2 .gauge {
     background-color: #dcffdc;
 }
-.country-info.happy .step-2 .gauge-inner {
+.country-info.happy .step-2 .gauge-inner,
+.country-info.happy .ways-container::-webkit-scrollbar-thumb {
     background-color: #1ab394;
 }
 .country-info.alright .step-2 .gauge {
     background-color: #dcdcff
 }
-.country-info.alright .step-2 .gauge-inner {
+.country-info.alright .step-2 .gauge-inner,
+.country-info.alright .ways-container::-webkit-scrollbar-thumb {
     background-color: #1c84c6;
 }
 .country-info.sad .step-2 .gauge {
     background-color: #ffffdc;
 }
-.country-info.sad .step-2 .gauge-inner {
+.country-info.sad .step-2 .gauge-inner,
+.country-info.sad .ways-container::-webkit-scrollbar-thumb {
     background-color: #f0ad4e;
 }
 .country-info.crying .step-2 .gauge {
     background-color: #ffdcdc;
 }
-.country-info.crying .step-2 .gauge-inner {
+.country-info.crying .step-2 .gauge-inner,
+.country-info.crying .ways-container::-webkit-scrollbar-thumb {
     background-color: #ed5565;
 }
 
@@ -373,4 +374,81 @@ a {
 .panel-group .panel-heading+.panel-collapse>.list-group,
 .panel-group .panel-heading+.panel-collapse>.panel-body {
     border-top: 0;
+}
+
+.country-info .step-3 .ways-container {
+    width: 640px;
+    height: 520px;
+    padding-right: 10px;
+    overflow-y: auto;
+}
+.ways-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+    background-color: #F5F5F5;
+}
+.ways-container::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+.ways-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+}
+.country-info .step-3 .ways-block {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+.country-info .step-3 .ways-container:before,
+.country-info .step-3 .ways-container:after {
+    display: block;
+    content: " ";
+    position: fixed;
+}
+.country-info .step-3 .ways-container:before {
+    top: 40px;
+    left: 80px;
+    width: 640px;
+    height: 25px;
+}
+.country-info .step-3 .ways-container:after {
+    bottom: 40px;
+    left: 80px;
+    width: 640px;
+    height: 25px;
+}
+.country-info.happy .ways-container:before {
+    background: linear-gradient(to top,rgba(220,255,220,0) 0,rgba(220,255,220,.5) 50%,rgba(220,255,220,1) 100%);
+}
+.country-info.happy .ways-container:after {
+    background: linear-gradient(to bottom,rgba(220,255,220,0) 0,rgba(220,255,220,.5) 50%,rgba(220,255,220,1) 100%);
+}
+.country-info.alright .ways-container:before {
+    background: linear-gradient(to top,rgba(220,220,255,0) 0,rgba(220,220,255,.5) 50%,rgba(220,220,255,1) 100%);
+}
+.country-info.alright .ways-container:after {
+    background: linear-gradient(to bottom,rgba(220,220,255,0) 0,rgba(220,220,255,.5) 50%,rgba(220,220,255,1) 100%);
+}
+.country-info.sad .ways-container:before {
+     background: linear-gradient(to top,rgba(255,255,220,0) 0,rgba(255,255,220,.5) 50%,rgba(255,255,220,1) 100%);
+ }
+.country-info.sad .ways-container:after {
+    background: linear-gradient(to bottom,rgba(255,255,220,0) 0,rgba(255,255,220,.5) 50%,rgba(255,255,220,1) 100%);
+}
+.country-info.crying .ways-container:before {
+    background: linear-gradient(to top,rgba(255,220,220,0) 0,rgba(255,220,220,.5) 50%,rgba(255,220,220,1) 100%);
+}
+.country-info.crying .ways-container:after {
+    background: linear-gradient(to bottom,rgba(255,220,220,0) 0,rgba(255,220,220,.5) 50%,rgba(255,220,220,1) 100%);
+}
+
+.country-info .step-3 .got-it {
+    display: block;
+    margin: 5px auto 50px;
+    width: 170px;
+    height: 45px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    outline: none;
 }

@@ -15,7 +15,10 @@
             <div class="rating">
                 (total happiness rating is {{countryInfo['HappyIndex'].toFixed(2)}})
             </div>
-            <button ng-click="goToSlide(2)" class="why">Why?</button>
+            <button ng-click="goToSlide(2)"
+                class="colored-button why">
+                Why?
+            </button>
         </div>
     </div>
     <div class="step step-2 step-invisible">
@@ -25,7 +28,8 @@
                      ng-src="https://peoplehappy.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">
                 <img class="dude-stencil" ng-src="assets/dude-{{countryMood}}.png" />
             </div>
-            <button class="how-to-change" ng-click="goToSlide(3)">
+            <button class="colored-button how-to-change"
+                ng-click="goToSlide(3)">
                 What could I do?
             </button>
         </div>
@@ -52,7 +56,14 @@
         </uib-accordion>
     </div>
     <div class="step step-3 step-invisible">
-        step 3
-        <button>close</button>
+        <div class="ways-container">
+            <div class="ways-block" ng-repeat="info in countryInfo['Infos']">
+                {{info['WaysToImprove']}}
+            </div>
+            <button class="colored-button got-it"
+                ng-click="closeModal()">
+                I've got it!
+            </button>
+        </div>
     </div>
 </div>

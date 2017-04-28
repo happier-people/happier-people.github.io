@@ -8,13 +8,9 @@ angular.module('myApp').controller('CountryInfoCtrl', [
         $scope.countryInfo = countryInfo;
         $scope.countryMood = hiService.getMood(countryInfo['HappyIndex']);
 
-        // $scope.ok = function () {
-        //     $uibModalInstance.close();
-        // };
-        //
-        // $scope.cancel = function () {
-        //     $uibModalInstance.dismiss();
-        // };
+        $scope.closeModal = function () {
+            $uibModalInstance.close();
+        };
 
         $scope.goToSlide = function (slideNumber) {
             let allSlides = $('.step');
