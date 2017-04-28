@@ -13,7 +13,11 @@ angular.module('myApp.map', ['ngRoute'])
     '$scope', '$uibModal', 'countriesService',
     function ($scope, $uibModal, countriesService) {
 
-        let palette = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854'];
+        let palette = [
+            '#f6d258', '#efcec5', '#d1af94',
+            '#88b14b', '#ef562d', '#d13076',
+            '#5587a2', '#5c7148', '#0c4c8a'
+        ];
 
         function generateColors (){
             let colors = {},
@@ -42,38 +46,12 @@ angular.module('myApp.map', ['ngRoute'])
                         }
                     });
 
-                    // modalInstance.result.then(function () {
-                    //     console.log('resolved');
-                    // }, function () {
-                    //     console.log('rejected');
-                    // });
+                    modalInstance.result.then(function () {
+                        console.log('resolved');
+                    }, function () {
+                        console.log('rejected');
+                    });
                 });
-
-
-            // countriesService.getCountryInfo(code)
-            //     .then(function (res) {
-            //         let countryInfo = res.data;
-            //
-            //         let modalInstance = $uibModal.open({
-            //             animation: true,
-            //             templateUrl: 'country-info/country-info.html',
-            //             controller: 'CountryInfoCtrl',
-            //             resolve: {
-            //                 countryInfo: function () {
-            //                     return countryInfo;
-            //                 }
-            //             }
-            //         });
-            //
-            //         modalInstance.result.then(function () {
-            //             console.log('resolved');
-            //         }, function () {
-            //             console.log('rejected');
-            //         });
-            //     })
-            //     .catch(function (err) {
-            //         console.log(err);
-            //     });
         }
 
         function onRegionTipShow (e, el, code) {
@@ -83,7 +61,7 @@ angular.module('myApp.map', ['ngRoute'])
         let map = new jvm.Map({
             map: 'world_mill',
             container: $('#map-container'),
-            backgroundColor: '#77c9d4',
+            backgroundColor: '#97d5e0',
             onRegionClick: onRegionClick,
             onRegionTipShow: onRegionTipShow,
             series: {
