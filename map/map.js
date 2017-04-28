@@ -114,5 +114,11 @@ angular.module('myApp.map', ['ngRoute'])
             console.log(err);
         });
 
-    preloadImage('assets/spinner.svg');
+    [
+        'assets/spinner.svg',
+        'assets/dude-happy.png',
+        'assets/dude-alright.png',
+        'assets/dude-sad.png',
+        'assets/dude-crying.png'
+    ].forEach(preloadImage);
 }]);
