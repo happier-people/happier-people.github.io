@@ -452,3 +452,18 @@ a {
     color: #fff;
     outline: none;
 }
+
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.spinner-overlay .spinner-inner {
+    width: 100px;
+    height: 100px;
+}

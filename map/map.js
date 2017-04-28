@@ -11,10 +11,10 @@ angular.module('myApp.map', ['ngRoute'])
 
 .controller('MapCtrl', [
     '$scope', '$uibModal', 'countriesService',
-    'hiService',
+    'hiService', 'spinnerService',
     function (
         $scope, $uibModal, countriesService,
-        hiService
+        hiService, spinnerService
     ) {
 
         let palette = [
@@ -34,18 +34,23 @@ angular.module('myApp.map', ['ngRoute'])
             return colors;
         }
 
-        function preloadImage (countryInfo) {
+        function preloadImage (descriptor) {
+            let imageURL = (typeof descriptor === 'string')
+                ? descriptor
+                : 'https://peoplehappy.azurewebsites.net/Images/' +
+                    descriptor['ISO2'] + '.svg';
+
             return new Promise(function (resolve, reject) {
                 let tmpImage = new Image();
                 tmpImage.onload = function() {
-                    return resolve(countryInfo);
+                    return resolve(descriptor);
                 };
-                tmpImage.src = 'https://peoplehappy.azurewebsites.net/Images/' +
-                    countryInfo['ISO2'] + '.svg';
+                tmpImage.src = imageURL;
             });
         }
 
         function onRegionClick (event, code) {
+            spinnerService.start();
             countriesService
                 .getCountryInfo(code)
                 .then(function (res) {
@@ -54,6 +59,8 @@ angular.module('myApp.map', ['ngRoute'])
                     }
                 })
                 .then(function (countryInfo) {
+                    spinnerService.stop();
+
                     let modalInstance = $uibModal.open({
                         animation: true,
                         templateUrl: 'country-info/country-info.html',
@@ -106,4 +113,6 @@ angular.module('myApp.map', ['ngRoute'])
         .catch(function (err) {
             console.log(err);
         });
+
+    preloadImage('assets/spinner.svg');
 }]);
