@@ -11,7 +11,11 @@ angular.module('myApp.map', ['ngRoute'])
 
 .controller('MapCtrl', [
     '$scope', '$uibModal', 'countriesService',
-    function ($scope, $uibModal, countriesService) {
+    'hiService',
+    function (
+        $scope, $uibModal, countriesService,
+        hiService
+    ) {
 
         let palette = [
             '#f6d258', '#efcec5', '#d1af94',
@@ -30,18 +34,33 @@ angular.module('myApp.map', ['ngRoute'])
             return colors;
         }
 
+        function preloadImage (countryInfo) {
+            return new Promise(function (resolve, reject) {
+                let tmpImage = new Image();
+                tmpImage.onload = function() {
+                    return resolve(countryInfo);
+                };
+                tmpImage.src = 'https://peoplehappy.azurewebsites.net/Images/' +
+                    countryInfo['ISO2'] + '.svg';
+            });
+        }
+
         function onRegionClick (event, code) {
             countriesService
                 .getCountryInfo(code)
                 .then(function (res) {
-                    // todo: handle errors
+                    if (res.data) {
+                        return preloadImage(res.data);
+                    }
+                })
+                .then(function (countryInfo) {
                     let modalInstance = $uibModal.open({
                         animation: true,
                         templateUrl: 'country-info/country-info.html',
                         controller: 'CountryInfoCtrl',
                         resolve: {
                             countryInfo: function () {
-                                return res.data;
+                                return countryInfo;
                             }
                         }
                     });
@@ -55,7 +74,15 @@ angular.module('myApp.map', ['ngRoute'])
         }
 
         function onRegionTipShow (e, el, code) {
-            el.html(el.html() + ' (code: ' + code + ')');
+            let targetCountry = $scope.countries.filter(function (country) {
+                return country['Id'] === code;
+            })[0];
+            if (!targetCountry) {
+                el.html(el.html() + ': no data');
+            } else {
+                let mood = hiService.getMood(targetCountry['HappyIndex']);
+                el.html(el.html() + ': ' + mood);
+            }
         }
 
         let map = new jvm.Map({
