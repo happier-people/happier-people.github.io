@@ -29,17 +29,27 @@
                 What could I do?
             </button>
         </div>
-        <div class="info">
-            <div class="info-block" ng-repeat="info in countryInfo['Infos']">
-                <div class="title">
-                    {{info['Name']}}: {{(info['Index'] * 100).toFixed(0)}}%
+        <uib-accordion class="info" close-others="true">
+            <div class="info-block"
+                ng-repeat="info in countryInfo['Infos']">
+
+                <div uib-accordion-group>
+                    <uib-accordion-heading>
+                        <div class="gauge-outer">
+                            <div class="gauge">
+                                <div class="gauge-inner" style="width: {{info['Index'] * 100}}%;"></div>
+                            </div>
+                            <div class="title">
+                                {{info['Name']}}: {{(info['Index'] * 100).toFixed(0)}}%
+                            </div>
+                        </div>
+                    </uib-accordion-heading>
+                    <div class="text">{{info['Text']}}</div>
                 </div>
-                <div class="gauge">
-                    <div class="gauge-inner" style="width: {{info['Index'] * 100}}%;"></div>
-                </div>
-                <div class="text">{{info['Text'].substring(0, 150)}}</div>
+
+
             </div>
-        </div>
+        </uib-accordion>
     </div>
     <div class="step step-3 step-invisible">
         step 3

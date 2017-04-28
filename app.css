@@ -285,11 +285,10 @@ a {
     width: 450px;
 }
 .country-info .step-2 .info-block {
-    padding: 10px;
-    margin: 25px 0;
+    margin: 30px 0;
     box-shadow: 0 0 1px 1px #afafaf;
-    position: relative;
-    border-radius: 10px 0;
+    /*position: relative;*/
+    /*border-radius: 10px 0;*/
 }
 .country-info .step-2 .title {
     position: absolute;
@@ -326,15 +325,21 @@ a {
     outline: none;
     font-size: 24px;
 }
+.country-info .step-2 .gauge-outer {
+    padding: 20px;
+    position: relative;
+}
 .country-info .step-2 .gauge {
     height: 5px;
     width: 100%;
     border-radius: 3px;
     overflow: hidden;
-    margin: 5px 0 10px;
 }
 .country-info .step-2 .gauge-inner {
     height: 100%;
+}
+.country-info .step-2 .text {
+    padding: 0 20px 20px;
 }
 .country-info.happy .step-2 .gauge {
     background-color: #dcffdc;
@@ -359,4 +364,13 @@ a {
 }
 .country-info.crying .step-2 .gauge-inner {
     background-color: #ed5565;
+}
+
+.panel-heading,
+.panel-body {
+    padding: 0;
+}
+.panel-group .panel-heading+.panel-collapse>.list-group,
+.panel-group .panel-heading+.panel-collapse>.panel-body {
+    border-top: 0;
 }
