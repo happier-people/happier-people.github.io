@@ -1,9 +1,9 @@
 angular.module('myApp').controller('CountryInfoCtrl', [
     '$uibModalInstance', '$scope', 'hiService',
-    'countryInfo',
+    '$timeout', 'countryInfo',
     function (
         $uibModalInstance, $scope, hiService,
-        countryInfo
+        $timeout,countryInfo
     ) {
         $scope.countryInfo = countryInfo;
         $scope.countryMood = hiService.getMood(countryInfo['HappyIndex']);
@@ -12,11 +12,19 @@ angular.module('myApp').controller('CountryInfoCtrl', [
             $uibModalInstance.close();
         };
 
-        $scope.goToSlide = function (slideNumber) {
-            let allSlides = $('.step');
-            let targetSlide = $('.step-' + slideNumber);
+        $scope.activeSlide = 'Nature';
 
-            allSlides.addClass('step-invisible');
-            targetSlide.removeClass('step-invisible');
+        $scope.goToSlide = function (slideName) {
+            let allSlides = $('.slide');
+            let targetSlide = $('.slide-' + slideName);
+
+            allSlides.addClass('slide-invisible');
+            targetSlide.removeClass('slide-invisible');
+
+            $scope.activeSlide = slideName;
         };
+
+        $timeout(function () {
+            $scope.goToSlide($scope.activeSlide);
+        }, 0);
     }]);

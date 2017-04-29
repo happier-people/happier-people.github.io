@@ -21,7 +21,7 @@ body.modal-open {
     -webkit-transform: translate(0,0) !important;
     -ms-transform: translate(0,0) !important;
     transform: translate(0,0) !important;
-    width: 800px;
+    width: 1000px;
     height: 600px;
     margin: calc(50vh - 300px) auto 0;
 }
@@ -147,7 +147,10 @@ a {
     width: 100%;
     height: 100%;
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
+
 .country-info.happy {
     background-color: #dcffdc;
 }
@@ -160,297 +163,232 @@ a {
 .country-info.crying {
     background-color: #ffdcdc;
 }
-.country-info .step {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: 0.5s opacity ease-in-out;
-}
-.country-info .step.step-invisible {
-    opacity: 0;
-    pointer-events: none;
-}
-.country-info .step {
+
+.country-info .nav-column {
+    width: 33%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
-.country-info .step .dude {
-    width: 350px;
-    height: 350px;
+.country-info .dude {
+    width: 250px;
+    height: 250px;
     position: relative;
-    margin-right: 15px;
 }
-.country-info .dude .dude-stencil,
-.country-info .dude .flag-bg {
+.country-info .dude .flag-bg,
+.country-info .dude .dude-stencil {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.country-info .gauges {
+    width: 200px;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+}
+.country-info .gauges .gauge-outer {
+    width: 10px;
+    background-color: #ccc;
+    display: flex;
+}
+.country-info .gauges .gauge-inner {
+    width: 100%;
+    background-color: red;
+    margin-top: auto;
+}
+.country-info .icons {
+    width: 90%;
+    margin: 0 auto;
+    height: 130px;
+    display: flex;
+}
+.country-info .icons .icon-wrapper {
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.country-info .icons .icon {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border: 5px solid;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+.country-info .icons .icon:hover,
+.country-info .icons .active .icon {
+    width: 90px;
+    height: 90px;
+}
+.country-info .icons .icon:before {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 0;
-}
-.country-info .step-1 .description {
+    font-family: 'FontAwesome', sans-serif;
     text-align: center;
-    width: 350px;
+    line-height: 70px;
+    font-size: 45px;
+    -webkit-text-stroke: 0 transparent;
+    transition: line-height 0.2s ease-in-out;
 }
-.country-info .step-1 .status {
-    font-size: 100px;
-    font-weight: 900;
+.country-info .icons .icon:hover:before,
+.country-info .icons .active .icon:before {
+    line-height: 80px;
+}
+.country-info .icon .filled {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.country-info.happy .icon .filled {
+    background-color: rgba(0,128,0,0.2);
+}
+.country-info.alright .icon .filled {
+    background-color: rgba(0,0,128,0.2);
+}
+.country-info.sad .icon .filled {
+    background-color: rgba(128,128,0,0.2);
+}
+.country-info.crying .icon .filled {
+    background-color: rgba(128,0,0,0.2);
+}
+
+.country-info .icons .icon.judge:before {
+    content: "\f24e";
+}
+.country-info .icons .icon.hunger:before {
+    content: "\f0f5";
+}
+.country-info .icons .icon.infrastructure:before {
+    content: "\f018";
+}
+.country-info .icons .icon.nature:before {
+    content: "\f06c";
+}
+
+.country-info .rating {
     font-family: 'Work Sans', sans-serif;
-    line-height: 1;
-    margin: 20px 0;
+    font-size: 65px;
+}
+.country-info .mood {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 40px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
 }
-.country-info .step-1 .why {
-    width: 200px;
-    height: 75px;
-    margin-top: 50px;
-    border-radius: 5px;
-    color: #fff;
-    outline: none;
-    font-size: 24px;
-}
-.country-info .step-1 .people-are {
-    font-size: 30px;
-}
-.country-info .step-1 .rating {
-    font-size: 22px;
-}
-.country-info.happy .status {
+
+.text-happy {
     color: #1ab394;
     -webkit-text-stroke: 3px #16987e;
 }
-.country-info.happy .colored-button {
-    background-color: #1ab394;
-    border: 2px solid #16987e;
-}
-.country-info.happy .colored-button:hover {
-    background-color: #18a689;
-}
-
-.country-info.alright .status {
+.text-alright {
     color: #1c84c6;
     -webkit-text-stroke: 3px #1872ab;
-    font-size: 80px;
 }
-.country-info.alright .colored-button {
-    background-color: #1c84c6;
-    border: 2px solid #1872ab;
-}
-.country-info.alright .colored-button:hover {
-    background-color: #1a7bb9;
-}
-
-.country-info.sad .status {
+.text-sad {
     color: #f0ad4e;
     -webkit-text-stroke: 3px #f79d3c;
 }
-.country-info.sad .colored-button {
-    background-color: #f0ad4e;
-    border: 2px solid #f79d3c;
-}
-.country-info.sad .colored-button:hover {
-    background-color: #f7a54a;
-}
-
-.country-info.crying .status {
-    font-size: 90px;
+.text-crying {
     color: #ed5565;
     -webkit-text-stroke: 3px #ea394c;
 }
-.country-info.crying .colored-button {
-    background-color: #ed5565;
-    border: 2px solid #ea394c;
-}
-.country-info.crying .colored-button:hover {
-    background-color: #ec4758;
+
+.country-info .details-column {
+    width: 66%;
 }
 
-.country-info .step-2 .dude {
-    width: 250px;
-    height: 250px;
+.country-info .details-text {
+    border: 2px solid;
+    height: 400px;
+    margin: 20px;
+    border-radius: 20px 0;
+    padding: 15px;
 }
-.country-info .step-2 .info {
-    width: 450px;
-}
-.country-info .step-2 .info-block {
-    margin: 30px 0;
-    box-shadow: 0 0 1px 1px #afafaf;
-    /*position: relative;*/
-    /*border-radius: 10px 0;*/
-}
-.country-info .step-2 .title {
-    position: absolute;
-    height: 26px;
-    top: -18px;
-    right: 10px;
-    padding: 0 13px;
-    box-shadow: 0 0 1px 1px #afafaf;
-    font-size: 18px;
-    line-height: 26px;
-}
-.country-info.happy .step-2 .info-block,
-.country-info.happy .step-2 .title,
-.country-info.happy .step-3 .ways-block {
-    background-color: #f0fff0;
-}
-.country-info.alright .step-2 .info-block,
-.country-info.alright .step-2 .title,
-.country-info.alright .step-3 .ways-block {
-    background-color: #f0f0ff;
-}
-.country-info.sad .step-2 .info-block,
-.country-info.sad .step-2 .title,
-.country-info.sad .step-3 .ways-block {
-    background-color: #f0ffff;
-}
-.country-info.crying .step-2 .info-block,
-.country-info.crying .step-2 .title,
-.country-info.crying .step-3 .ways-block {
-    background-color: #fff0f0;
-}
-.country-info .step-2 .how-to-change {
-    width: 230px;
-    height: 75px;
-    margin-top: 50px;
-    border-radius: 5px;
-    color: #fff;
-    outline: none;
-    font-size: 24px;
-}
-.country-info .step-2 .gauge-outer {
-    padding: 20px;
+
+.country-info .text-inner-container {
     position: relative;
-}
-.country-info .step-2 .gauge {
-    height: 5px;
-    width: 100%;
-    border-radius: 3px;
-    overflow: hidden;
-}
-.country-info .step-2 .gauge-inner {
     height: 100%;
+    color: #111;
+    -webkit-text-stroke: 0 transparent;
 }
-.country-info .step-2 .text {
-    padding: 0 20px 20px;
+
+.country-info .details-text .slide {
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in-out;
+    padding-right: 15px;
 }
-.country-info.happy .step-2 .gauge {
-    background-color: #dcffdc;
+.country-info .details-text .slide.slide-invisible {
+    opacity: 0;
+    pointer-events: none;
 }
-.country-info.happy .step-2 .gauge-inner,
-.country-info.happy .ways-container::-webkit-scrollbar-thumb {
+
+.country-info .details-text .info-title {
+    font-size: 120%;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.country-info .details-text .info-description {
+    margin-bottom: 5px;
+}
+
+/*.panel-heading,*/
+/*.panel-body {*/
+    /*padding: 0;*/
+/*}*/
+/*.panel-group .panel-heading+.panel-collapse>.list-group,*/
+/*.panel-group .panel-heading+.panel-collapse>.panel-body {*/
+    /*border-top: 0;*/
+/*}*/
+
+.slide::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+    background-color: #f5f5f5;
+}
+.slide::-webkit-scrollbar {
+    width: 6px;
+}
+.happy .slide::-webkit-scrollbar-thumb {
     background-color: #1ab394;
 }
-.country-info.alright .step-2 .gauge {
-    background-color: #dcdcff
-}
-.country-info.alright .step-2 .gauge-inner,
-.country-info.alright .ways-container::-webkit-scrollbar-thumb {
+.alright .slide::-webkit-scrollbar-thumb {
     background-color: #1c84c6;
 }
-.country-info.sad .step-2 .gauge {
-    background-color: #ffffdc;
-}
-.country-info.sad .step-2 .gauge-inner,
-.country-info.sad .ways-container::-webkit-scrollbar-thumb {
+.sad .slide::-webkit-scrollbar-thumb {
     background-color: #f0ad4e;
 }
-.country-info.crying .step-2 .gauge {
-    background-color: #ffdcdc;
-}
-.country-info.crying .step-2 .gauge-inner,
-.country-info.crying .ways-container::-webkit-scrollbar-thumb {
+.crying .slide::-webkit-scrollbar-thumb {
     background-color: #ed5565;
 }
 
-.panel-heading,
-.panel-body {
-    padding: 0;
-}
-.panel-group .panel-heading+.panel-collapse>.list-group,
-.panel-group .panel-heading+.panel-collapse>.panel-body {
-    border-top: 0;
-}
-
-.country-info .step-3 .ways-container {
-    width: 640px;
-    height: 520px;
-    padding-right: 10px;
-    overflow-y: auto;
-}
-.ways-container::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-    background-color: #F5F5F5;
-}
-.ways-container::-webkit-scrollbar {
-    width: 6px;
-    background-color: #F5F5F5;
-}
-.ways-container::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.3);
-}
-.country-info .step-3 .ways-block {
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 10px;
-}
-
-.country-info .step-3 .ways-container:before,
-.country-info .step-3 .ways-container:after {
-    display: block;
-    content: " ";
-    position: fixed;
-}
-.country-info .step-3 .ways-container:before {
-    top: 40px;
-    left: 80px;
-    width: 640px;
-    height: 25px;
-}
-.country-info .step-3 .ways-container:after {
-    bottom: 40px;
-    left: 80px;
-    width: 640px;
-    height: 25px;
-}
-.country-info.happy .ways-container:before {
-    background: linear-gradient(to top,rgba(220,255,220,0) 0,rgba(220,255,220,.5) 50%,rgba(220,255,220,1) 100%);
-}
-.country-info.happy .ways-container:after {
-    background: linear-gradient(to bottom,rgba(220,255,220,0) 0,rgba(220,255,220,.5) 50%,rgba(220,255,220,1) 100%);
-}
-.country-info.alright .ways-container:before {
-    background: linear-gradient(to top,rgba(220,220,255,0) 0,rgba(220,220,255,.5) 50%,rgba(220,220,255,1) 100%);
-}
-.country-info.alright .ways-container:after {
-    background: linear-gradient(to bottom,rgba(220,220,255,0) 0,rgba(220,220,255,.5) 50%,rgba(220,220,255,1) 100%);
-}
-.country-info.sad .ways-container:before {
-     background: linear-gradient(to top,rgba(255,255,220,0) 0,rgba(255,255,220,.5) 50%,rgba(255,255,220,1) 100%);
- }
-.country-info.sad .ways-container:after {
-    background: linear-gradient(to bottom,rgba(255,255,220,0) 0,rgba(255,255,220,.5) 50%,rgba(255,255,220,1) 100%);
-}
-.country-info.crying .ways-container:before {
-    background: linear-gradient(to top,rgba(255,220,220,0) 0,rgba(255,220,220,.5) 50%,rgba(255,220,220,1) 100%);
-}
-.country-info.crying .ways-container:after {
-    background: linear-gradient(to bottom,rgba(255,220,220,0) 0,rgba(255,220,220,.5) 50%,rgba(255,220,220,1) 100%);
-}
-
-.country-info .step-3 .got-it {
-    display: block;
-    margin: 5px auto 50px;
-    width: 170px;
-    height: 45px;
-    border-radius: 5px;
+.country-info .close-cross {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    -webkit-text-stroke: 0 transparent;
     font-size: 20px;
-    color: #fff;
-    outline: none;
+    cursor: pointer;
 }
 
 .spinner-overlay {

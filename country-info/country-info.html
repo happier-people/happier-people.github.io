@@ -1,69 +1,63 @@
 <div class="country-info" ng-class="countryMood">
-    <div class="step step-1">
+    <div class="nav-column">
         <div class="dude">
             <img class="flag-bg"
-                 ng-src="https://peoplehappy.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">
+                ng-src="https://happynation.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">
             <img class="dude-stencil" ng-src="assets/dude-{{countryMood}}.png" />
         </div>
-        <div class="description">
-            <div class="people-are">
-                People in {{countryInfo['Name']}} are
-            </div>
-            <div class="status">
-                {{countryMood}}
-            </div>
-            <div class="rating">
-                (total happiness rating is {{countryInfo['HappyIndex'].toFixed(2)}})
-            </div>
-            <button ng-click="goToSlide(2)"
-                class="colored-button why">
-                Why?
-            </button>
+        <!--<div class="indexes-graph">-->
+            <!--<div class="gauges">-->
+                <!--<div class="gauge-outer" ng-repeat="info in countryInfo['Infos']">-->
+                    <!--<div class="gauge-inner" style="height: {{info['Index'] * 100}}%"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="icons">-->
+
+            <!--</div>-->
+        <!--</div>-->
+        <div class="rating" ng-class="'text-' + countryMood">
+            {{countryInfo['HappyIndex'].toFixed(1)}}
+        </div>
+        <div class="mood" ng-class="'text-' + countryMood">
+            {{countryMood}}
         </div>
     </div>
-    <div class="step step-2 step-invisible">
-        <div class="left-column">
-            <div class="dude">
-                <img class="flag-bg"
-                     ng-src="https://peoplehappy.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">
-                <img class="dude-stencil" ng-src="assets/dude-{{countryMood}}.png" />
-            </div>
-            <button class="colored-button how-to-change"
-                ng-click="goToSlide(3)">
-                What could I do?
-            </button>
-        </div>
-        <uib-accordion class="info" close-others="true">
-            <div class="info-block"
+    <div class="details-column" ng-class="'text-' + countryMood">
+        <div class="icons">
+            <div class="icon-wrapper"
+                ng-class="info['Name'] === activeSlide ? 'active' : ''"
                 ng-repeat="info in countryInfo['Infos']">
-
-                <div uib-accordion-group>
-                    <uib-accordion-heading>
-                        <div class="gauge-outer">
-                            <div class="gauge">
-                                <div class="gauge-inner" style="width: {{info['Index'] * 100}}%;"></div>
-                            </div>
-                            <div class="title">
-                                {{info['Name']}}: {{(info['Index'] * 100).toFixed(0)}}%
-                            </div>
-                        </div>
-                    </uib-accordion-heading>
-                    <div class="text">{{info['Text']}}</div>
+                <div class="icon"
+                    ng-class="info['Name'].toLowerCase()"
+                    ng-click="goToSlide(info['Name'])"
+                    title="{{info['Name']}}">
+                    <div class="filled" style="height: {{info['Index'] * 100}}%"></div>
                 </div>
-
-
             </div>
-        </uib-accordion>
-    </div>
-    <div class="step step-3 step-invisible">
-        <div class="ways-container">
-            <div class="ways-block" ng-repeat="info in countryInfo['Infos']">
-                {{info['WaysToImprove']}}
-            </div>
-            <button class="colored-button got-it"
-                ng-click="closeModal()">
-                I've got it!
-            </button>
         </div>
+        <div class="details-text">
+            <div class="text-inner-container">
+                <div class="slide slide-invisible"
+                    ng-repeat="info in countryInfo['Infos']"
+                    ng-class="'slide-' + info['Name']">
+                    <div class="info-title">
+                        What is wrong?
+                    </div>
+                    <div class="info-description">
+                        {{info['Text']}}
+                    </div>
+                    <div class="info-title">
+                        How can I help?
+                    </div>
+                    <div class="info-description">
+                        {{info['WaysToImprove']}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="close-cross" ng-class="'text-' + countryMood"
+        ng-click="closeModal()">
+        <i class="fa fa-times" aria-hidden="true"></i>
     </div>
 </div>
