@@ -1,7 +1,31 @@
 <div id="map-container" class="map-container"></div>
+
 <div class="filter-container">
     <div class="filter-button" ng-repeat="entry in filterIcons"
         ng-click="filterMap(entry.filter)" ng-class="entry.filter === activeFilter ? 'active' : ''">
         <i class="fa" ng-class="entry.icon" aria-hidden="true"></i>
+    </div>
+</div>
+
+<div class="assistant-container" ng-show="isAssistantShown" ng-class="currentCountryMood">
+    <div class="indexes-graph">
+        <div class="gauges">
+            <div class="gauge-outer" ng-repeat="entry in assistantIcons">
+                <div class="gauge-inner" style="height: {{currentCountry[entry.filter] * 100}}%"></div>
+            </div>
+        </div>
+        <div class="icons">
+            <i class="fa" ng-repeat="entry in assistantIcons"
+                ng-class="entry.icon" aria-hidden="true">
+            </i>
+        </div>
+        <div class="status">
+            {{currentCountry['Name']}}: {{(currentCountry['HappyIndex'] * 5).toFixed(1)}}
+        </div>
+    </div>
+    <div class="dude">
+        <img class="flag-bg"
+             ng-src="https://happynation.azurewebsites.net/Images/{{currentCountry['ISO2']}}.svg">
+        <img class="dude-stencil" ng-src="assets/dude-{{currentCountryMood}}.png" />
     </div>
 </div>

@@ -78,16 +78,28 @@ angular.module('myApp.map', ['ngRoute'])
                 });
         }
 
-        function onRegionTipShow (e, el, code) {
-            let targetCountry = $scope.countries.filter(function (country) {
-                return country['Id'] === code;
+        $scope.isAssistantShown = false;
+        $scope.assistantIcons = [
+            { filter: 'NatureIndex', icon: 'fa-leaf' },
+            { filter: 'JudgeIndex', icon: 'fa-balance-scale' },
+            { filter: 'InfrastructureIndex', icon: 'fa-road' },
+            { filter: 'HungerIndex', icon: 'fa-cutlery' }
+        ];
+        // $scope.currentCountry = $scope.countriesOnMap[0];
+        // $scope.currentCountryMood = hiService.getMood($scope.currentCountry['HappyIndex']);
+
+        function onRegionOver (e, code) {
+            $scope.currentCountry = $scope.countriesOnMap.filter(function (country) {
+                return country['Id'] === code
             })[0];
-            if (!targetCountry) {
-                el.html(el.html() + ': no data');
-            } else {
-                let mood = hiService.getMood(targetCountry['HappyIndex']);
-                el.html(el.html() + ': ' + mood);
-            }
+            $scope.currentCountryMood = hiService.getMood($scope.currentCountry['HappyIndex']);
+
+            $scope.isAssistantShown = true;
+            $scope.$apply();
+        }
+        function onRegionOut (e, code) {
+            $scope.isAssistantShown = false;
+            $scope.$apply();
         }
 
         function chunkify (array, n) {
@@ -118,6 +130,14 @@ angular.module('myApp.map', ['ngRoute'])
             if (filterBy === 'Global') {
                 return map.series.regions[0].setValues(generateColors());
             }
+
+            // clear those without data
+            // todo: optimize this
+            let clearColors = {};
+            for (let key in map.regions) {
+                clearColors[key] = '#fff';
+            }
+            map.series.regions[0].setValues(clearColors);
 
             let palettes = {
                 'NatureIndex': ["#FFFFFF", "#EFF6EF", "#EBF4EB", "#E7F2E7", "#E2EFE2", "#DBECDB", "#D2E8D2", "#C7E3C7", "#A9D4A9", "#A9D4A9", "#94CA94", "#7ABD7A", "#5AAD5A", "#329932", "#008000"],
@@ -171,6 +191,9 @@ angular.module('myApp.map', ['ngRoute'])
             map: 'world_mill',
             container: $('#map-container'),
             backgroundColor: '#97d5e0',
+            onRegionOver: onRegionOver,
+            onRegionOut: onRegionOut,
+
             // onRegionClick: onRegionClick,
             // onRegionTipShow: onRegionTipShow,
             series: {
@@ -181,6 +204,7 @@ angular.module('myApp.map', ['ngRoute'])
         });
         map.series.regions[0].setValues(generateColors());
 
+        spinnerService.start();
         countriesService.getAllCountries()
             .then(function (res) {
                 $scope.countries = res.data;
@@ -189,6 +213,14 @@ angular.module('myApp.map', ['ngRoute'])
                 $scope.countriesOnMap = $scope.countries.filter(function (country) {
                     return mapCountryCodes.indexOf(country['Id']) !== -1;
                 });
+
+                let promises = $scope.countriesOnMap.map(function (country) {
+                    return preloadImage(country);
+                });
+                return Promise.all(promises);
+            })
+            .then(function () {
+                spinnerService.stop();
             })
             .catch(function (err) {
                 console.log(err);

@@ -5,16 +5,6 @@
                 ng-src="https://happynation.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">
             <img class="dude-stencil" ng-src="assets/dude-{{countryMood}}.png" />
         </div>
-        <!--<div class="indexes-graph">-->
-            <!--<div class="gauges">-->
-                <!--<div class="gauge-outer" ng-repeat="info in countryInfo['Infos']">-->
-                    <!--<div class="gauge-inner" style="height: {{info['Index'] * 100}}%"></div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="icons">-->
-
-            <!--</div>-->
-        <!--</div>-->
         <div class="rating" ng-class="'text-' + countryMood">
             {{countryInfo['HappyIndex'].toFixed(1)}}
         </div>

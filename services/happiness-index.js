@@ -8,19 +8,19 @@ angular.module('myApp').service('hiService', [
         };
 
         function getMood (happinessIndex) {
-            if ((happinessIndex >= 0) && (happinessIndex < 0.5)) {
+            if ((happinessIndex >= 0) && (happinessIndex < 0.3757508518)) {
                 return MOODS.CRYING;
             }
 
-            if ((happinessIndex >= 0.5) && (happinessIndex < 0.55)) {
+            if ((happinessIndex >= 0.3757508518) && (happinessIndex < 0.4592707355)) {
                 return MOODS.SAD;
             }
 
-            if ((happinessIndex >= 0.55) && (happinessIndex < 0.6)) {
+            if ((happinessIndex >= 0.4592707355) && (happinessIndex < 0.566336456)) {
                 return MOODS.ALRIGHT;
             }
 
-            if ((happinessIndex >= 0.6) && (happinessIndex <= 1)) {
+            if ((happinessIndex >= 0.566336456) && (happinessIndex <= 1)) {
                 return MOODS.HAPPY;
             }
 
