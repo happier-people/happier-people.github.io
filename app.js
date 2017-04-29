@@ -8,7 +8,8 @@ angular.module('myApp', [
     'myApp.map',
     'myApp.howCalculated',
     'myApp.authors',
-    'myApp.goals'
+    'myApp.goals',
+    'myApp.rating'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');

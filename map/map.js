@@ -11,10 +11,10 @@ angular.module('myApp.map', ['ngRoute'])
 
 .controller('MapCtrl', [
     '$scope', '$uibModal', 'countriesService',
-    'hiService', 'spinnerService',
+    'hiService', 'spinnerService', 'mapService',
     function (
         $scope, $uibModal, countriesService,
-        hiService, spinnerService
+        hiService, spinnerService, mapService
     ) {
 
         let palette = [
@@ -37,7 +37,7 @@ angular.module('myApp.map', ['ngRoute'])
         function preloadImage (descriptor) {
             let imageURL = (typeof descriptor === 'string')
                 ? descriptor
-                : 'https://peoplehappy.azurewebsites.net/Images/' +
+                : 'https://happynation.azurewebsites.net/Images/' +
                     descriptor['ISO2'] + '.svg';
 
             return new Promise(function (resolve, reject) {
@@ -91,6 +91,29 @@ angular.module('myApp.map', ['ngRoute'])
                 el.html(el.html() + ': ' + mood);
             }
         }
+
+        jQuery.fn.vectorMap('addMap', 'world_mill', {
+            "insets": [{
+                "width": 900,
+                "top": 0,
+                "height": 440.7063107441331,
+                "bbox": [{
+                    "y": -12671671.123330014,
+                    "x": -20004297.151525836
+                }, {
+                    "y": 6930392.025135122,
+                    "x": 20026572.394749384
+                }],
+                "left": 0
+            }],
+            "paths": mapService.COUNTRIES_PATHS,
+            "height": 440.7063107441331,
+            "projection": {
+                "type": "mill",
+                "centralMeridian": 11.5
+            },
+            "width": 900.0
+        });
 
         let map = new jvm.Map({
             map: 'world_mill',

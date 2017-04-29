@@ -1,0 +1,32 @@
+<div class="rating-container">
+    <div class="title">
+        Fancy title
+    </div>
+    <div class="description">
+        <div class="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam augue, facilisis at luctus vel, pretium quis lacus. Vivamus in rhoncus nunc. Quisque aliquam interdum ipsum, in maximus risus interdum at. Cras tincidunt justo eget tincidunt suscipit. Morbi vel pretium dolor. Aliquam enim odio, posuere vel vehicula id, ullamcorper a eros. Aenean vitae neque in eros egestas eleifend.
+        </div>
+        <div class="paragraph">
+            Vestibulum semper porttitor sem, quis malesuada nulla iaculis id. Vivamus euismod pretium metus, ut rutrum ex aliquam sed. Mauris pretium feugiat semper. Nunc sit amet aliquet orci. Donec felis velit, pellentesque et commodo ac, placerat vel sapien. Suspendisse blandit consequat eros eget tincidunt. Nulla bibendum urna convallis arcu fermentum, quis mollis libero egestas. Phasellus imperdiet mauris et mollis sodales. Vivamus sodales dapibus finibus. Nullam vel odio enim. Donec molestie nibh quis sagittis tempus. In lectus sem, interdum vel volutpat non, hendrerit lacinia arcu.
+        </div>
+    </div>
+    <div class="search">
+        <input type="text" ng-model="searchQuery" placeholder="type here to search countries" />
+    </div>
+    <div class="countries">
+        <div class="country"
+            ng-repeat="country in filteredCountries = (countries | filter : { Name: searchQuery }) | limitTo:countriesPerPage:countriesPerPage*(currentPage-1)">
+            {{country['Name']}}
+        </div>
+        <ul uib-pagination
+            rotate="true"
+            force-ellipses="true"
+            direction-links="false"
+            items-per-page="countriesPerPage"
+            total-items="filteredCountries.length"
+            ng-model="currentPage"
+            max-size="7"
+            boundary-links="true"
+            boundary-link-numbers="true"></ul>
+    </div>
+</div>

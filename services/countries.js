@@ -4,14 +4,14 @@ angular.module('myApp').service('countriesService', [
         function getAllCountries () {
             return $http({
                 method: 'GET',
-                url: 'https://peoplehappy.azurewebsites.net/api/info/countries'
+                url: 'https://happynation.azurewebsites.net/api/info/countries'
             });
         }
 
         function getCountryInfo (countryCode) {
             return $http({
                 method: 'GET',
-                url: 'https://peoplehappy.azurewebsites.net/api/info/CountryInfo/' + countryCode
+                url: 'https://happynation.azurewebsites.net/api/info/CountryInfo/' + countryCode
             });
         }
 
