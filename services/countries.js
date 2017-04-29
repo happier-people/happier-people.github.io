@@ -4,7 +4,7 @@ angular.module('myApp').service('countriesService', [
         function getAllCountries () {
             return $http({
                 method: 'GET',
-                url: 'https://happynation.azurewebsites.net/api/info/countries'
+                url: 'https://happynation.azurewebsites.net/api/Info/Countries'
             });
         }
 

@@ -1,1 +1,7 @@
 <div id="map-container" class="map-container"></div>
+<div class="filter-container">
+    <div class="filter-button" ng-repeat="entry in filterIcons"
+        ng-click="filterMap(entry.filter)" ng-class="entry.filter === activeFilter ? 'active' : ''">
+        <i class="fa" ng-class="entry.icon" aria-hidden="true"></i>
+    </div>
+</div>

@@ -405,3 +405,25 @@ a {
     width: 100px;
     height: 100px;
 }
+
+.filter-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    width: 220px;
+    height: 50px;
+    align-items: center;
+    justify-content: space-around;
+    color: #1273d0;
+    font-size: 25px;
+    border: 1px solid #151c46;
+    border-radius: 5px;
+    background-color: #97d5e0;
+}
+.filter-container .filter-button {
+    cursor: pointer;
+}
+.filter-container .filter-button.active {
+    color: #151c46;
+}
