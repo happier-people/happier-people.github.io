@@ -1,5 +1,8 @@
 <div class="country-info" ng-class="countryMood">
     <div class="nav-column">
+        <div class="country-name">
+            {{countryInfo['Name']}}
+        </div>
         <div class="dude">
             <img class="flag-bg"
                 ng-src="https://happynation.azurewebsites.net/Images/{{countryInfo['ISO2']}}.svg">

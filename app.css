@@ -176,6 +176,25 @@ a {
     flex-direction: column;
     flex-wrap: wrap;
 }
+.country-info .nav-column .country-name {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    max-width: 250px;
+}
+.country-info.happy .country-name {
+    color: #1a7759;
+}
+.country-info.alright .country-name {
+    color: #1c5794;
+}
+.country-info.sad .country-name {
+    color: #b47e40;
+}
+.country-info.crying .country-name {
+    color: #b14554;
+}
 .country-info .dude {
     width: 250px;
     height: 250px;
@@ -188,23 +207,6 @@ a {
     right: 0;
     bottom: 0;
     left: 0;
-}
-
-.country-info .gauges {
-    width: 200px;
-    height: 150px;
-    display: flex;
-    justify-content: space-around;
-}
-.country-info .gauges .gauge-outer {
-    width: 10px;
-    background-color: #ccc;
-    display: flex;
-}
-.country-info .gauges .gauge-inner {
-    width: 100%;
-    background-color: red;
-    margin-top: auto;
 }
 .country-info .icons {
     width: 90%;
