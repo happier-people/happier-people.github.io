@@ -6,9 +6,20 @@
     </div>
     <div class="countries">
         <div class="country"
-            ng-repeat="country in filteredCountries = (countries | filter : { Name: searchQuery }) | limitTo:countriesPerPage:countriesPerPage*(currentPage-1)">
-            {{country['Name']}}
+            ng-repeat="country in filteredCountries = (countries | filter : { Name: searchQuery }) | limitTo:countriesPerPage:countriesPerPage*(currentPage-1)"
+            ng-click="showDetails(country)">
+            <div class="flag-small">
+                <img ng-src="https://happynation.azurewebsites.net/Images/{{country['ISO2']}}.svg" />
+            </div>
+            <div class="country-name">
+                {{country['Name']}}
+            </div>
+            <div class="index">
+                {{(country['HappyIndex'] * 5).toFixed(1)}}
+            </div>
         </div>
+    </div>
+    <div class="pagination-holder">
         <ul uib-pagination
             rotate="true"
             force-ellipses="true"

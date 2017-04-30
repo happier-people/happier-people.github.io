@@ -535,7 +535,8 @@ a {
 }
 
 .rating-container .search {
-    margin: 20px 0;
+    margin: 20px auto;
+    width: 400px;
 }
 .rating-container .search .search-input {
     width: 100%;
@@ -543,4 +544,34 @@ a {
     padding: 0 10px;
     border: 1px solid #151c46;
     border-radius: 5px;
+    outline: none;
+}
+.rating-container .country {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 400px;
+    border: 1px solid #151c46;
+    margin: -1px auto 0;
+    cursor: pointer;
+}
+.rating-container .country:hover {
+    background-color: #337ab7;
+    color: #fff;
+}
+.rating-container .country .flag-small {
+    width: 60px;
+    padding: 5px 15px;
+}
+.rating-container .country .country-name {
+    width: 300px;
+}
+.rating-container .country .index {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.rating-container .pagination-holder {
+    display: flex;
+    justify-content: center;
 }

@@ -12,9 +12,11 @@ angular.module('myApp.map', ['ngRoute'])
 .controller('MapCtrl', [
     '$scope', '$uibModal', 'countriesService',
     'hiService', 'spinnerService', 'mapService',
+    'imagesService',
     function (
         $scope, $uibModal, countriesService,
-        hiService, spinnerService, mapService
+        hiService, spinnerService, mapService,
+        imagesService
     ) {
         let palette = [
             '#f6d258', '#efcec5', '#d1af94',
@@ -30,21 +32,6 @@ angular.module('myApp.map', ['ngRoute'])
                 colors[key] = palette[Math.floor(Math.random()*palette.length)];
             }
             return colors;
-        }
-
-        function preloadImage (descriptor) {
-            let imageURL = (typeof descriptor === 'string')
-                ? descriptor
-                : 'https://happynation.azurewebsites.net/Images/' +
-                    descriptor['ISO2'] + '.svg';
-
-            return new Promise(function (resolve, reject) {
-                let tmpImage = new Image();
-                tmpImage.onload = function() {
-                    return resolve(descriptor);
-                };
-                tmpImage.src = imageURL;
-            });
         }
 
         function onRegionClick (event, code) {
@@ -216,7 +203,7 @@ angular.module('myApp.map', ['ngRoute'])
                 });
 
                 let promises = $scope.countriesOnMap.map(function (country) {
-                    return preloadImage(country);
+                    return imagesService.preloadImage(country);
                 });
                 return Promise.all(promises);
             })
@@ -233,6 +220,6 @@ angular.module('myApp.map', ['ngRoute'])
             'assets/dude-alright.png',
             'assets/dude-sad.png',
             'assets/dude-crying.png'
-        ].forEach(preloadImage);
+        ].forEach(imagesService.preloadImage);
     }
 ]);
