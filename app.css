@@ -575,3 +575,33 @@ a {
     display: flex;
     justify-content: center;
 }
+
+.how-calculated .intro-paragraph {
+    margin: 20px 0;
+}
+.how-calculated .happy-index-diagram {
+    width: 640px;
+    margin: 0 auto;
+}
+.how-calculated .formula {
+    font-style: italic;
+    max-width: 500px;
+    text-align: center;
+    margin: 20px auto;
+}
+.how-calculated .references-table {
+    margin-bottom: 35px;
+}
+.how-calculated .references-table th {
+    padding: 10px;
+    background-color: #151c46;
+    color: #fff;
+    border: 1px solid #151c46;
+}
+.how-calculated .references-table td {
+    border: 1px solid #151c46;
+    padding: 10px;
+}
+.how-calculated .references-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
