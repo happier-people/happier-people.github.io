@@ -601,10 +601,15 @@ a {
     background-color: #151c46;
     color: #fff;
     border: 1px solid #151c46;
+    letter-spacing: 1px;
 }
 .how-calculated .references-table td {
     border: 1px solid #151c46;
     padding: 10px;
+}
+.how-calculated .references-table.word-break td {
+    max-width: 800px;
+    word-break: break-all;
 }
 .how-calculated .references-table tr:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.05);
