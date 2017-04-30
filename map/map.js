@@ -129,7 +129,7 @@ angular.module('myApp.map', ['ngRoute'])
 
             let palettes = {
                 'NatureIndex': ["#FFFFFF", "#EFF6EF", "#EBF4EB", "#E7F2E7", "#E2EFE2", "#DBECDB", "#D2E8D2", "#C7E3C7", "#A9D4A9", "#A9D4A9", "#94CA94", "#7ABD7A", "#5AAD5A", "#329932", "#008000"],
-                'JudgeIndex': ["#FFFFFF", "#ECDEDE", "#E5D0D0", "#DBBCBC", "#D3ACAC", "#CFA3A3", "#CA9999", "#C58E8E", "#BF8282", "#B87575", "#B16666", "#A95555", "#A04343", "#962F2F", "#8B1919", "#7F0000"],
+                'JudgeIndex': ["#7F0000", "#8B1919", "#962F2F", "#A04343", "#A95555", "#B16666", "#B87575", "#BF8282", "#C58E8E", "#CA9999", "#CFA3A3", "#D3ACAC", "#DBBCBC", "#E5D0D0", "#ECDEDE", "#FFFFFF"],
                 'InfrastructureIndex': ["#FFFFFF", "#F0F0F0", "#EAEAEA", "#E5E5E5", "#DFDFDF", "#D8D8D8", "#CFCFCF", "#C3C3C3", "#B5B5B5", "#A3A3A3", "#999999", "#8E8E8E", "#828282", "#757575", "#666666"],
                 'HungerIndex': ["#FFFFFF", "#FFF7EB", "#FFF3DF", "#FFEBCB", "#FFE7BF", "#FFE2AF", "#FFDB9B", "#FFD282", "#FFCE75", "#FFC966", "#FFC355", "#FFBD43", "#FFB62F", "#FFAE19", "#FFA500"]
             };
