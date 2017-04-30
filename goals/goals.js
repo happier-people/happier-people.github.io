@@ -9,6 +9,17 @@ angular.module('myApp.goals', ['ngRoute'])
         });
     }])
 
-    .controller('GoalsCtrl', [function() {
-
-    }]);
+    .controller('GoalsCtrl', [
+        '$scope',
+        function ($scope) {
+            $scope.links = [
+                'http://jvectormap.com/',
+                'http://lpi.worldbank.org/',
+                'https://unstats.un.org',
+                'http://sedac.ciesin.columbia.edu',
+                'https://www.numbeo.com',
+                'http://happyplanetindex.org',
+                'https://github.com/happier-people/happier-people.github.io'
+            ];
+        }
+    ]);

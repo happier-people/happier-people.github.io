@@ -134,6 +134,10 @@ a {
 }
 .author-block .photo-holder {
     width: 220px;
+    height: 220px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .author-block .text-holder {
     width: calc(100% - 235px);
@@ -615,4 +619,16 @@ a {
 }
 .how-calculated .references-table tr:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.goals .paragraph {
+    margin: 20px 0;
+}
+.goals .ol-list {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+.goals .ul-list {
+    list-style: none;
+    padding-left: 0;
 }
