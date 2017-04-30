@@ -29,5 +29,9 @@ angular.module('myApp').controller('MainCtrl', [
         $scope.hideOverlay = function () {
             $scope.isOverlayShown = false;
         };
+
+        Array.prototype.diff = function(a) {
+            return this.filter(function(i) {return a.indexOf(i) < 0;});
+        };
     }
 ]);
