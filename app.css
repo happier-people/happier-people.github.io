@@ -32,6 +32,10 @@ body.modal-open {
     overflow: hidden;
 }
 
+[ng\:cloak],[ng-cloak],.ng-cloak {
+    display:none !important
+}
+
 img {
     width: 100%;
 }
@@ -83,7 +87,7 @@ a {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: rgba(255,255,255,0.8);
+    background-color: #edeef0;
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
     cursor: pointer;
@@ -92,9 +96,9 @@ a {
     opacity: 0;
     pointer-events: none;
 }
-.intro-overlay .title {
-    color: #151c46;
-    font-size: 70px;
+.intro-overlay .earth-dude {
+    width: 250px;
+    margin-bottom: 25px;
 }
 .intro-overlay .sub-title {
     color: #151c46;
