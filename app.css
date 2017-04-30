@@ -533,3 +533,14 @@ a {
     width: 150px;
     font-size: 18px;
 }
+
+.rating-container .search {
+    margin: 20px 0;
+}
+.rating-container .search .search-input {
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+    border: 1px solid #151c46;
+    border-radius: 5px;
+}

@@ -6,7 +6,7 @@
             <img class="dude-stencil" ng-src="assets/dude-{{countryMood}}.png" />
         </div>
         <div class="rating" ng-class="'text-' + countryMood">
-            {{countryInfo['HappyIndex'].toFixed(1)}}
+            {{(countryInfo['HappyIndex'] * 5).toFixed(1)}}
         </div>
         <div class="mood" ng-class="'text-' + countryMood">
             {{countryMood}}
@@ -16,19 +16,19 @@
         <div class="icons">
             <div class="icon-wrapper"
                 ng-class="info['Name'] === activeSlide ? 'active' : ''"
-                ng-repeat="info in countryInfo['Infos']">
+                ng-repeat="info in countryInfo.textInfos">
                 <div class="icon"
                     ng-class="info['Name'].toLowerCase()"
                     ng-click="goToSlide(info['Name'])"
                     title="{{info['Name']}}">
-                    <div class="filled" style="height: {{info['Index'] * 100}}%"></div>
+                    <div class="filled" style="height: {{countryInfo[info['Name'] + 'Index'] * 100}}%"></div>
                 </div>
             </div>
         </div>
         <div class="details-text">
             <div class="text-inner-container">
                 <div class="slide slide-invisible"
-                    ng-repeat="info in countryInfo['Infos']"
+                    ng-repeat="info in countryInfo.textInfos"
                     ng-class="'slide-' + info['Name']">
                     <div class="info-title">
                         What is wrong?

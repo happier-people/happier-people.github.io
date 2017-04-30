@@ -48,33 +48,36 @@ angular.module('myApp.map', ['ngRoute'])
         }
 
         function onRegionClick (event, code) {
+            let targetCountry = $scope.countries.filter(function (country) {
+                return country['Id'] === code;
+            })[0];
+
             spinnerService.start();
             countriesService
-                .getCountryInfo(code)
+                .getCountryTexts(code)
                 .then(function (res) {
                     if (res.data) {
-                        return preloadImage(res.data);
-                    }
-                })
-                .then(function (countryInfo) {
-                    spinnerService.stop();
+                        targetCountry.textInfos = res.data;
 
-                    let modalInstance = $uibModal.open({
-                        animation: true,
-                        templateUrl: 'country-info/country-info.html',
-                        controller: 'CountryInfoCtrl',
-                        resolve: {
-                            countryInfo: function () {
-                                return countryInfo;
+                        spinnerService.stop();
+
+                        let modalInstance = $uibModal.open({
+                            animation: true,
+                            templateUrl: 'country-info/country-info.html',
+                            controller: 'CountryInfoCtrl',
+                            resolve: {
+                                countryInfo: function () {
+                                    return targetCountry;
+                                }
                             }
-                        }
-                    });
+                        });
 
-                    modalInstance.result.then(function () {
-                        console.log('resolved');
-                    }, function () {
-                        console.log('rejected');
-                    });
+                        modalInstance.result.then(function () {
+                            console.log('resolved');
+                        }, function () {
+                            console.log('rejected');
+                        });
+                    }
                 });
         }
 
@@ -85,8 +88,6 @@ angular.module('myApp.map', ['ngRoute'])
             { filter: 'InfrastructureIndex', icon: 'fa-road' },
             { filter: 'HungerIndex', icon: 'fa-cutlery' }
         ];
-        // $scope.currentCountry = $scope.countriesOnMap[0];
-        // $scope.currentCountryMood = hiService.getMood($scope.currentCountry['HappyIndex']);
 
         function onRegionOver (e, code) {
             $scope.currentCountry = $scope.countriesOnMap.filter(function (country) {
@@ -194,7 +195,7 @@ angular.module('myApp.map', ['ngRoute'])
             onRegionOver: onRegionOver,
             onRegionOut: onRegionOut,
 
-            // onRegionClick: onRegionClick,
+            onRegionClick: onRegionClick,
             // onRegionTipShow: onRegionTipShow,
             series: {
                 regions: [{
